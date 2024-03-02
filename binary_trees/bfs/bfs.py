@@ -47,4 +47,22 @@ def bfs(root: Optional[Node]) -> List[Node]:
     recursion(root)
     return list(dict.fromkeys(queue))
 
+def bfs_std(root: Optional[Node]) -> List[Node]:
+    results = []
+    queue = [root]
+
+    while(len(queue) > 0):
+        current = queue.pop(0)
+
+        results.append(current.val)
+        if current.left != None:
+            queue.append(current.left)
+        if current.right != None:
+            root = current.right
+            queue.append(current.right)
+    
+    return results
+
+
 print(bfs(a))
+print(bfs_std(a))

@@ -50,4 +50,25 @@ function bfs(root) {
     return [...new Set(queue)]
 }
 
+function bfs_std(root) {
+    const results = [];
+    const queue = [root];
+    
+    while(queue.length > 0) {
+        let current = queue.shift();
+
+        results.push(current.val);
+        if(current.left !== null) {
+            queue.push(current.left);
+        }
+        if(current.right !== null) {
+            queue.push(current.right);
+        }
+
+    }
+
+    return results;
+}
+
 console.log(bfs(a));
+console.log(bfs_std(a));
