@@ -65,11 +65,11 @@ def dfs_recursion_helper(root):
 
     return result
 
-# print("DFS: ", dfs(a))
-# print("DFS None: ", dfs(None))
-# print("DFS Recusion: ", dfs_recursion(a))
-# print("DFS Recusion Null: ", dfs_recursion(None))
+print("DFS: ", dfs(a))
+print("DFS None: ", dfs(None))
+print("DFS Recusion: ", dfs_recursion(a))
+print("DFS Recusion Null: ", dfs_recursion(None))
 print("DFS Recusion w/ Helper: ", dfs_recursion_helper(a))
 print("DFS Recusion w/ Helper Null: ", dfs_recursion_helper(None))
-        
+
 

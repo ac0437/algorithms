@@ -72,9 +72,16 @@ def tree_sum_dfs_recursion(root: Optional[Node]) -> int:
         
     return count
 
+def tree_sum_dfs_recursion_optimized(root):
+    if root == None:
+        return 0
+    return root.val + tree_sum_dfs_recursion(root.left) + tree_sum_dfs_recursion(root.right)
+
 print(tree_sum_bfs(a))
 print(tree_sum_dfs(a))
 print(tree_sum_dfs_recursion(a))
 print(tree_sum_bfs(b))
 print(tree_sum_dfs(b))
 print(tree_sum_dfs_recursion(b))
+print("DFS Recusion Optimized: ", tree_sum_dfs_recursion_optimized(a))
+print("DFS Recusion Optimized Null: ", tree_sum_dfs_recursion_optimized(None))

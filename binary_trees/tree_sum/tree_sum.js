@@ -13,11 +13,11 @@ const d = new Node(4);
 const e = new Node(5);
 const f = new Node(6);
 
-//      a
+//      1
 //     / \
-//    b   c
+//    2   3
 //   /\   /
-//  d  e f
+//  4  5 6
 a.left = b;
 a.right = c;
 b.left = d;
@@ -81,6 +81,12 @@ function tree_sum_dfs_recursion(root) {
     return count;
 }
 
+function tree_sum_dfs_recursion_optimized(root) {
+    if(!root) return 0;
+    return root.val + tree_sum_dfs_recursion_optimized(root.left) + tree_sum_dfs_recursion_optimized(root.right);
+}
+
 console.log(tree_sum_bfs(a));
 console.log(tree_sum_dfs(a));
 console.log(tree_sum_dfs_recursion(a));
+console.log(tree_sum_dfs_recursion_optimized(a));
