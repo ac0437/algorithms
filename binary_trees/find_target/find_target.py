@@ -28,7 +28,6 @@ c.left = f
 
 def find_target_dfs(root: Optional[Node] | None, target: str) -> bool:
     if root == None:
-        print("Root is None: ")
         return None
     
     stack = [root]
