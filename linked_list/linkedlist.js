@@ -45,6 +45,35 @@ function getTailNode(node) {
     return tail.val;
 }
 
+function insertNode(node, parent) {
+    let newChildNode = parent.next;
+
+    parent.next = node;
+    node.prev = parent;
+    node.next = newChildNode;
+    newChildNode.prev = node;
+    
+    return node;
+}
+
+function deleteNode(node) {
+    let nodePrev = node.prev;
+    let nodeNext = node.next;
+
+    node.prev.next = nodeNext;
+    node.next.prev = nodePrev;
+    node.prev = null;
+    node.next = null;
+
+    return node;
+}
+
 traversalLinkedList(a);
 console.log("Head: ", getHeadNode(c));
 console.log("Tail: ", getTailNode(d));
+console.log("Insert: ", insertNode(new Node(1), a));
+console.log("Delete: ", deleteNode(b));
+traversalLinkedList(a);
+console.log("Insert: ", insertNode(b, a));
+traversalLinkedList(a);
+
