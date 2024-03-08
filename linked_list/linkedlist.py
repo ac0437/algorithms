@@ -45,6 +45,7 @@ def getTailNode(root):
     return tail.val
 
 def insertNode(node, parent):
+    #prepend and append logic
     nextNode = parent.next
     
     parent.next = node
@@ -55,6 +56,7 @@ def insertNode(node, parent):
     return node.val
 
 def deleteNode(node):
+    # del from head and tail logic
     prevNode = node.prev
     nextNode = node.next
 
@@ -65,10 +67,47 @@ def deleteNode(node):
 
     return node.val
 
+def deleteNodeAt(root, index):
+    current = root
+    count = 0
+    while count != index:
+        current = current.next
+        print("current: ", count, current)
+        if current == None:
+            print("We are out of bounds of the array and the element was not found.")
+            return False
+        count += 1
+    
+    deleteNode(current)
+    return current.val
+
+def getLength(root):
+    current = root
+    results = []
+    while current != None:
+        results.append(current.val)
+        current = current.next
+
+    return len(results)
+
+
+def getNode(root, targetVal):
+    current = root
+    while current.val != targetVal:
+        current = current.next
+        print('print', current)
+        if current == None:
+            return False
+    
+    return True
 
 iterate(a)
 print("Head: ", getHeadNode(a))
 print("Tails: ", getTailNode(a))
 print("Insert: ", insertNode(Node(1), a))
-print("Delete: ", deleteNode(b))
+# print("Delete: ", deleteNode(b))
+print("Delete Node At: ", deleteNodeAt(a, 2))
 iterate(a)
+print("Get Node (Found): ", getNode(a, 'd'))
+print("Get Node (Not Found): ", getNode(a, 'f'))
+print("Length: ", getLength(a))

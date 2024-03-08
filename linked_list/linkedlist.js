@@ -68,6 +68,44 @@ function deleteNode(node) {
     return node;
 }
 
+function deleteAt(root, index) {
+    let current = root;
+    let count = 0;
+    while(current) {
+        if(count === index) {
+            return deleteNode(current);
+        }
+        current = current.next;
+        count++;
+    }
+
+    return -1;
+}
+
+function getNode(root, target) {
+    let current = root;
+    while(current){
+        if(current.val === target){
+            return current.val;
+        } else {
+            current = current.next;
+        }  
+    }
+    
+    return -1; 
+}
+
+function getLength(root) {
+    let results = [];
+    let current = root;
+    while(current) {
+        results.push(current.val);
+        current = current.next;
+    }
+    console.log(results)
+    return results.length;
+}
+
 traversalLinkedList(a);
 console.log("Head: ", getHeadNode(c));
 console.log("Tail: ", getTailNode(d));
@@ -76,4 +114,8 @@ console.log("Delete: ", deleteNode(b));
 traversalLinkedList(a);
 console.log("Insert: ", insertNode(b, a));
 traversalLinkedList(a);
+console.log("Get node: ", getNode(a, 'c'));
+console.log("Get node (Not found): ", getNode(a, 'v'));
+console.log("Delete node at: ", deleteAt(a, 2))
+console.log("Get size: ", getLength(a))
 
