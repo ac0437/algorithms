@@ -46,24 +46,40 @@ function getTailNode(node) {
 }
 
 function insertNode(node, parent) {
-    let newChildNode = parent.next;
+    if(!parent.prev) {
+        parent.prev = node;
+        node.next = parent;
+    } else if (!parent.next) {
+        parent.next = node;
+        node.prev = parent;
+    } else {
+        let newChildNode = parent.next;
 
-    parent.next = node;
-    node.prev = parent;
-    node.next = newChildNode;
-    newChildNode.prev = node;
-    
+        parent.next = node;
+        node.prev = parent;
+        node.next = newChildNode;
+        newChildNode.prev = node;
+    }
+
     return node;
 }
 
 function deleteNode(node) {
-    let nodePrev = node.prev;
-    let nodeNext = node.next;
-
-    node.prev.next = nodeNext;
-    node.next.prev = nodePrev;
-    node.prev = null;
-    node.next = null;
+    if(!node.prev) {
+        node.next.prev = null;
+        node.next = null;
+    } else if(!node.next) {
+        node.prev.next = null;
+        node.prev = null;
+    } else {
+        let nodePrev = node.prev;
+        let nodeNext = node.next;
+    
+        node.prev.next = nodeNext;
+        node.next.prev = nodePrev;
+        node.prev = null;
+        node.next = null;    
+    }
 
     return node;
 }
@@ -106,16 +122,25 @@ function getLength(root) {
     return results.length;
 }
 
-traversalLinkedList(a);
-console.log("Head: ", getHeadNode(c));
-console.log("Tail: ", getTailNode(d));
-console.log("Insert: ", insertNode(new Node(1), a));
-console.log("Delete: ", deleteNode(b));
-traversalLinkedList(a);
-console.log("Insert: ", insertNode(b, a));
-traversalLinkedList(a);
-console.log("Get node: ", getNode(a, 'c'));
-console.log("Get node (Not found): ", getNode(a, 'v'));
-console.log("Delete node at: ", deleteAt(a, 2))
-console.log("Get size: ", getLength(a))
+// traversalLinkedList(a);
+// console.log("Head: ", getHeadNode(c));
+// console.log("Tail: ", getTailNode(d));
+// console.log("Insert: ", insertNode(new Node(1), a));
+// console.log("Delete: ", deleteNode(b));
+// traversalLinkedList(a);
+// console.log("Insert: ", insertNode(b, a));
+// traversalLinkedList(a);
+// console.log("Get node: ", getNode(a, 'c'));
+// console.log("Get node (Not found): ", getNode(a, 'v'));
+// console.log("Delete node at: ", deleteAt(a, 2));
+// console.log("Get size: ", getLength(a));
+// let one = new Node(1);
+// console.log("Insert to head: ", insertNode(one, a));
+// traversalLinkedList(one);
+// console.log("Delete from head: ", deleteNode(one))
+// traversalLinkedList(one);
+// console.log("Insert to tail: ", insertNode(one, d));
+// traversalLinkedList(a);
+// console.log("Delete from tail: ", deleteNode(one))
+// traversalLinkedList(a);
 

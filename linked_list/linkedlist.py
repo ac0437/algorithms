@@ -19,6 +19,7 @@ b.prev = a
 b.next = c
 c.prev = b
 c.next = d
+d.prev = c
 
 def iterate(root):
     current = root
@@ -45,25 +46,37 @@ def getTailNode(root):
     return tail.val
 
 def insertNode(node, parent):
-    #prepend and append logic
-    nextNode = parent.next
-    
-    parent.next = node
-    nextNode.prev = node
-    node.prev = parent
-    node.next = nextNode
+    if parent.prev == None:
+        parent.prev = node
+        node.next = parent
+    elif parent.next == None:
+        parent.next = node
+        node.prev = parent
+    else:
+        nextNode = parent.next
+        
+        parent.next = node
+        nextNode.prev = node
+        node.prev = parent
+        node.next = nextNode
 
     return node.val
 
 def deleteNode(node):
-    # del from head and tail logic
-    prevNode = node.prev
-    nextNode = node.next
+    if node.prev == None:
+        node.next.prev = None
+        node.next = None
+    elif node.next == None:
+        node.prev.next = None
+        node.prev = None
+    else:
+        prevNode = node.prev
+        nextNode = node.next
 
-    prevNode.next = nextNode
-    nextNode.prev = prevNode
-    node.prev = None
-    node.next = None
+        prevNode.next = nextNode
+        nextNode.prev = prevNode
+        node.prev = None
+        node.next = None
 
     return node.val
 
@@ -101,13 +114,22 @@ def getNode(root, targetVal):
     
     return True
 
-iterate(a)
-print("Head: ", getHeadNode(a))
-print("Tails: ", getTailNode(a))
-print("Insert: ", insertNode(Node(1), a))
-# print("Delete: ", deleteNode(b))
-print("Delete Node At: ", deleteNodeAt(a, 2))
-iterate(a)
-print("Get Node (Found): ", getNode(a, 'd'))
-print("Get Node (Not Found): ", getNode(a, 'f'))
-print("Length: ", getLength(a))
+# iterate(a)
+# print("Head: ", getHeadNode(a))
+# print("Tails: ", getTailNode(a))
+# print("Insert: ", insertNode(Node(1), a))
+# # print("Delete: ", deleteNode(b))
+# print("Delete Node At: ", deleteNodeAt(a, 2))
+# iterate(a)
+# print("Get Node (Found): ", getNode(a, 'd'))
+# print("Get Node (Not Found): ", getNode(a, 'f'))
+# print("Length: ", getLength(a))
+# one = Node(1)
+# print("Insert head: ", insertNode(one, a))
+# iterate(one)
+# print("Delete head: ", deleteNode(one))
+# iterate(a)
+# print("Insert tail: ", insertNode(one, d))
+# iterate(a)
+# print("Delete tail: ", deleteNode(one))
+# iterate(a)
