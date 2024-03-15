@@ -122,6 +122,18 @@ function getLength(root) {
     return results.length;
 }
 
+function sumOfLinkedList(node) {
+    let sum = 0;
+    let current = node;
+
+    while(current) {
+        sum += current.val.charCodeAt(0);
+        current = current.next;
+    }
+
+    return sum;
+}
+
 // traversalLinkedList(a);
 // console.log("Head: ", getHeadNode(c));
 // console.log("Tail: ", getTailNode(d));
@@ -143,4 +155,5 @@ function getLength(root) {
 // traversalLinkedList(a);
 // console.log("Delete from tail: ", deleteNode(one))
 // traversalLinkedList(a);
+console.log(sumOfLinkedList(a))
 

@@ -114,6 +114,14 @@ def getNode(root, targetVal):
     
     return True
 
+def sumOfLinkedList(root):
+    totalSum = 0
+    current = root
+    while current != None:
+        totalSum += ord(current.val)
+        current = current.next
+    
+    return totalSum
 # iterate(a)
 # print("Head: ", getHeadNode(a))
 # print("Tails: ", getTailNode(a))
@@ -133,3 +141,4 @@ def getNode(root, targetVal):
 # iterate(a)
 # print("Delete tail: ", deleteNode(one))
 # iterate(a)
+print(sumOfLinkedList(a))
