@@ -122,6 +122,25 @@ def sumOfLinkedList(root):
         current = current.next
     
     return totalSum
+
+def reverseLinkedList(tail):
+    current = tail
+
+    while current != None:
+        if current.next == None:
+            current.next = current.prev
+            current.prev =  None
+        elif current.prev == None:
+            current.prev = current.next
+            current.next = None
+        else:
+            new_next = current.prev
+            new_prev = current.next
+            current.next = new_next
+            current.prev = new_prev
+        current = current.next
+    
+    return True
 # iterate(a)
 # print("Head: ", getHeadNode(a))
 # print("Tails: ", getTailNode(a))
@@ -141,4 +160,6 @@ def sumOfLinkedList(root):
 # iterate(a)
 # print("Delete tail: ", deleteNode(one))
 # iterate(a)
-print(sumOfLinkedList(a))
+# print(sumOfLinkedList(a))
+# reverseLinkedList(d)
+# iterate(d)

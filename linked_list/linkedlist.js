@@ -134,6 +134,22 @@ function sumOfLinkedList(node) {
     return sum;
 }
 
+function reverseLinkedList(head) {
+    let current = head;
+    let prev = null;
+
+    while(current) {
+        let next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+
+    head = prev;
+
+    return head;
+}
+
 // traversalLinkedList(a);
 // console.log("Head: ", getHeadNode(c));
 // console.log("Tail: ", getTailNode(d));
@@ -155,5 +171,7 @@ function sumOfLinkedList(node) {
 // traversalLinkedList(a);
 // console.log("Delete from tail: ", deleteNode(one))
 // traversalLinkedList(a);
-console.log(sumOfLinkedList(a))
+// console.log(sumOfLinkedList(a))
+console.log(reverseLinkedList(a));
+traversalLinkedList(d);
 
